@@ -6,7 +6,29 @@ Built with [Liteshow](https://liteshow.io) - AI-first, SEO-optimized, Git-powere
 
 This is a static Astro site that works on **any hosting platform**. Choose your preferred platform below.
 
-### ⚡ Vercel (Recommended)
+### 🚀 GitHub Pages (Recommended)
+
+**Natively supported by Liteshow with 1-click deployment!**
+
+Your site is already configured for GitHub Pages deployment via GitHub Actions. Simply:
+
+1. Go to your Liteshow project dashboard
+2. Navigate to the **Deployment** tab
+3. Click **Deploy Now**
+
+Liteshow will automatically:
+- ✅ Enable GitHub Pages for your repository
+- ✅ Trigger the deployment workflow
+- ✅ Build and publish your site
+- ✅ Provide you with a live URL
+
+**Your site will be live at:** `https://<username>.github.io/<repo-name>/`
+
+**Custom Domains:** You can configure a custom domain in your project's Deployment settings.
+
+---
+
+### ⚡ Vercel
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone)
 
@@ -31,56 +53,55 @@ This is a static Astro site that works on **any hosting platform**. Choose your 
 4. Add environment variables (see below)
 5. Click **Deploy site**
 
-### 🚀 Other Platforms
+### 🌐 Other Platforms
 
 This static site also works on:
 - **Cloudflare Pages** - Auto-detects Astro
-- **GitHub Pages** - 1-click deployment coming soon!
 - **AWS S3 + CloudFront** - Upload `dist/` folder
 - **Any static host** - Just upload the `dist/` folder
 
 ## Environment Variables
 
-Add these in your deployment platform's dashboard:
+**For GitHub Pages:** Environment variables are automatically configured by Liteshow. No manual setup needed!
+
+**For other platforms:** Add these in your deployment platform's dashboard:
 
 | Variable | Value | Description |
 |----------|-------|-------------|
-| `LITESHOW_API_URL` | `https://api.liteshow.io` | Liteshow API URL (use default unless custom) |
-| `LITESHOW_PROJECT_SLUG` | `your-project-slug` | Your project slug from Liteshow |
-
-**Where to get these values:**
-1. Go to your Liteshow project settings
-2. Find your project slug in the deployment section
-3. Add these environment variables to your hosting platform
-
-**Important:** Content is fetched from the API at **build time**, so you need to trigger a new deployment when you publish content in Liteshow.
+| `PUBLIC_API_URL` | Your Liteshow API URL | Contact Liteshow support for your API URL |
 
 ## Local Development
 
 ```bash
-# Copy environment template
-cp .env.example .env
-
-# Edit .env and add your configuration
-# Get your project slug from your Liteshow project settings
-# LITESHOW_API_URL=https://api.liteshow.io
-# LITESHOW_PROJECT_SLUG=your-project-slug
-
-# Install and run
+# Install dependencies
 npm install
+
+# Start dev server
 npm run dev
 ```
 
 Visit http://localhost:4321
 
+**Note:** When running locally, the site fetches content from your Liteshow project's API. Make sure your content is published in the Liteshow dashboard.
+
 ## How It Works
 
-This Astro site fetches your published content from the Liteshow API at build time. The API securely connects to your project's database and serves your content - you just publish your content and deploy!
+This Astro site fetches your published content from the Liteshow API at build time. The workflow is simple:
+
+1. **Create/edit content** in Liteshow dashboard
+2. **Publish** your pages when ready
+3. **Deploy** from the Deployment tab (GitHub Pages) or push to your main branch
+4. **Live!** Your site is rebuilt with the latest content
+
+Content is fetched securely from your project's database via the Liteshow API.
 
 ## Project Structure
 
 ```
 /
+├── .github/
+│   └── workflows/
+│       └── deploy.yml      # GitHub Pages deployment
 ├── src/
 │   ├── components/
 │   │   └── blocks/         # Content block components
@@ -93,6 +114,9 @@ This Astro site fetches your published content from the Liteshow API at build ti
 │       ├── [slug].astro    # Dynamic pages
 │       └── 404.astro       # Not found page
 ├── astro.config.mjs
-├── package.json
-└── netlify.toml            # Netlify config
+└── package.json
 ```
+
+## Support
+
+Need help? Visit [liteshow.io/docs](https://liteshow.io/docs) or contact support at support@liteshow.io
