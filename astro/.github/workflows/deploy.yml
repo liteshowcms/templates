@@ -44,7 +44,7 @@ jobs:
         env:
           LITESHOW_API_URL: ${{ secrets.LITESHOW_API_URL }}
           LITESHOW_PROJECT_SLUG: ${{ secrets.LITESHOW_PROJECT_SLUG }}
-          BASE_PATH: /${{ github.event.repository.name }}/
+          BASE_PATH: ${{ secrets.BASE_PATH }}
         run: pnpm build
         working-directory: ${{ env.BUILD_PATH }}
 
